@@ -48,7 +48,10 @@ jobs:
 
       - name: Install NSIS (windows installer)
         if: runner.os == 'Windows'
-        run: choco install nsis -y
+        run: |
+          choco install nsis -y
+          Add-Content -Path $env:GITHUB_PATH -Value "C:\Program Files (x86)\NSIS"
+        shell: pwsh
 
       - name: Package
         run: wails3 package
