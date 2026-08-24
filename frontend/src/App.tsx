@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Events } from "@wailsio/runtime";
-import { VideoService } from "../bindings/yyvideopress";
-import type { VideoInfo, ConvertResult } from "../bindings/yyvideopress";
+import { VideoService } from "../bindings/xyvideopress";
+import type { VideoInfo, ConvertResult } from "../bindings/xyvideopress";
 import "./App.css";
 
 const AUDIO_KBPS = 128;
@@ -62,7 +62,7 @@ const i18n = {
     smaller: (p: number) => `（小了 ${p}%）`,
   },
   en: {
-    title: "YY_VideoPress",
+    title: "XY_VideoPress",
     subtitle: "Compress and convert videos — keep your disk healthy.",
     choose: "Choose a video…",
     format: "Format",

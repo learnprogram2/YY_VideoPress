@@ -192,7 +192,7 @@ func (s *VideoService) Produce(path string, targetBytes int64, targetHeight int,
 		name = srcBase + "-compressed"
 	}
 	out := uniquePath(dir, name, container)
-	passlog := filepath.Join(os.TempDir(), "yyvp-2pass-"+strconv.Itoa(os.Getpid()))
+	passlog := filepath.Join(os.TempDir(), "xyvp-2pass-"+strconv.Itoa(os.Getpid()))
 	defer func() {
 		_ = os.Remove(passlog + "-0.log")
 		_ = os.Remove(passlog + "-0.log.mbtree")

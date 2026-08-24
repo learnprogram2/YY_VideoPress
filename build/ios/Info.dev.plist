@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleExecutable</key>
-    <string>yy_videopress</string>
+    <string>xy_videopress</string>
     <key>CFBundleIdentifier</key>
-    <string>tech.luxor.yyvideopress.dev</string>
+    <string>tech.luxor.xyvideopress.dev</string>
     <key>CFBundleName</key>
-    <string>YY_VideoPress (Dev)</string>
+    <string>XY_VideoPress (Dev)</string>
     <key>CFBundleDisplayName</key>
-    <string>YY_VideoPress (Dev)</string>
+    <string>XY_VideoPress (Dev)</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

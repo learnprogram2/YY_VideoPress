@@ -1,4 +1,4 @@
-# 小燕压缩 · YY_VideoPress
+# 小燕压缩 · XY_VideoPress
 
 > 压缩、转换视频，让硬盘更清爽。
 

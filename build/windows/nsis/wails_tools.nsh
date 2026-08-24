@@ -5,13 +5,13 @@
 !include "FileFunc.nsh"
 
 !ifndef INFO_PROJECTNAME
-    !define INFO_PROJECTNAME "YY_VideoPress"
+    !define INFO_PROJECTNAME "XY_VideoPress"
 !endif
 !ifndef INFO_COMPANYNAME
     !define INFO_COMPANYNAME "Luxor"
 !endif
 !ifndef INFO_PRODUCTNAME
-    !define INFO_PRODUCTNAME "YY_VideoPress"
+    !define INFO_PRODUCTNAME "XY_VideoPress"
 !endif
 !ifndef INFO_PRODUCTVERSION
     !define INFO_PRODUCTVERSION "0.1.0"

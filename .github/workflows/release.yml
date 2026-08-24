@@ -58,7 +58,7 @@ jobs:
 
       - name: Zip .app (macOS)
         if: runner.os == 'macOS'
-        run: ditto -c -k --keepParent bin/yy-videopress.app "YY_VideoPress-${{ matrix.name }}.zip"
+        run: ditto -c -k --keepParent bin/xy-videopress.app "XY_VideoPress-${{ matrix.name }}.zip"
 
       - name: Collect installers (Windows)
         if: runner.os == 'Windows'
@@ -70,9 +70,9 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: YY_VideoPress-${{ matrix.name }}
+          name: XY_VideoPress-${{ matrix.name }}
           path: |
-            YY_VideoPress-*.zip
+            XY_VideoPress-*.zip
             dist/*.exe
           if-no-files-found: warn
 
@@ -81,5 +81,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            YY_VideoPress-*.zip
+            XY_VideoPress-*.zip
             dist/*.exe

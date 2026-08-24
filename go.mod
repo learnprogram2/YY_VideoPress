@@ -1,4 +1,4 @@
-module yyvideopress
+module xyvideopress
 
 go 1.25.0
 

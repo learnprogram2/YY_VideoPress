@@ -26,7 +26,7 @@ func main() {
 	// 'Bind' is a list of Go struct instances. The frontend has access to the methods of these instances.
 	// 'Mac' options tailor the application when running an macOS.
 	app := application.New(application.Options{
-		Name:        "YY_VideoPress",
+		Name:        "XY_VideoPress",
 		Description: "Compress and convert videos to keep your disk healthy",
 		Services: []application.Service{
 			application.NewService(&VideoService{}),
@@ -45,7 +45,7 @@ func main() {
 	// 'BackgroundColour' is the background colour of the window.
 	// 'URL' is the URL that will be loaded into the webview.
 	app.Window.NewWithOptions(application.WebviewWindowOptions{
-		Title:  "小燕压缩 · YY_VideoPress",
+		Title:  "小燕压缩 · XY_VideoPress",
 		Width:  1000,
 		Height: 720,
 		Mac: application.MacWindow{

@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
-Name=YY_VideoPress
+Name=XY_VideoPress
 Comment=Compress and convert videos to keep your disk healthy
 # The Exec line includes %u to pass the URL to the application
-Exec=/usr/local/bin/yy_videopress %u
+Exec=/usr/local/bin/xy_videopress %u
 Terminal=false
 Type=Application
-Icon=yy_videopress
+Icon=xy_videopress
 Categories=Utility;
-StartupWMClass=yy_videopress
+StartupWMClass=xy_videopress
 
  

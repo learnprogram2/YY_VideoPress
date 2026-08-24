@@ -8,13 +8,13 @@
         AllowPromptForPassword="false">
     </Settings>
     <Installer
-        Path="yy_videopress"
+        Path="xy_videopress"
         Arguments=""
-        InstallLocation="C:\Program Files\Luxor\YY_VideoPress">
+        InstallLocation="C:\Program Files\Luxor\XY_VideoPress">
     </Installer>
     <PackageInformation
-        PackageName="YY_VideoPress"
-        PackageDisplayName="YY_VideoPress"
+        PackageName="XY_VideoPress"
+        PackageDisplayName="XY_VideoPress"
         PublisherName="CN=Luxor"
         PublisherDisplayName="Luxor"
         Version="0.1.0.0"
@@ -25,10 +25,10 @@
         </Capabilities>
         <Applications>
             <Application
-                Id="tech.luxor.yyvideopress"
+                Id="tech.luxor.xyvideopress"
                 Description="Compress and convert videos to keep your disk healthy"
-                DisplayName="YY_VideoPress"
-                ExecutableName="yy_videopress"
+                DisplayName="XY_VideoPress"
+                ExecutableName="xy_videopress"
                 EntryPoint="Windows.FullTrustApplication">
                 
             </Application>
@@ -41,13 +41,13 @@
         </Dependencies>
         <Properties>
             <Framework>false</Framework>
-            <DisplayName>YY_VideoPress</DisplayName>
+            <DisplayName>XY_VideoPress</DisplayName>
             <PublisherDisplayName>Luxor</PublisherDisplayName>
             <Description>Compress and convert videos to keep your disk healthy</Description>
             <Logo>Assets\AppIcon.png</Logo>
         </Properties>
     </PackageInformation>
-    <SaveLocation PackagePath="yy_videopress.msix" />
+    <SaveLocation PackagePath="xy_videopress.msix" />
     <PackageIntegrity>
         <CertificatePath></CertificatePath>
     </PackageIntegrity>

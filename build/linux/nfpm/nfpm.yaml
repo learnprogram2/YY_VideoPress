@@ -3,7 +3,7 @@
 #
 # The lines below are called `modelines`. See `:help modeline`
 
-name: "yy_videopress"
+name: "xy_videopress"
 arch: ${GOARCH}
 platform: "linux"
 version: "0.1.0"
@@ -17,12 +17,12 @@ license: "MIT"
 release: "1"
 
 contents:
-  - src: "./bin/yy_videopress"
-    dst: "/usr/local/bin/yy_videopress"
+  - src: "./bin/xy_videopress"
+    dst: "/usr/local/bin/xy_videopress"
   - src: "./build/appicon.png"
-    dst: "/usr/share/icons/hicolor/128x128/apps/yy_videopress.png"
-  - src: "./build/linux/yy_videopress.desktop"
-    dst: "/usr/share/applications/yy_videopress.desktop"
+    dst: "/usr/share/icons/hicolor/128x128/apps/xy_videopress.png"
+  - src: "./build/linux/xy_videopress.desktop"
+    dst: "/usr/share/applications/xy_videopress.desktop"
 
 # Default dependencies for the GTK4 + WebKitGTK 6.0 stack (Ubuntu 24.04+ / Debian 13+)
 depends:
