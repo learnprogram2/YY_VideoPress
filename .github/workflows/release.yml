@@ -58,7 +58,9 @@ jobs:
 
       - name: Zip .app (macOS)
         if: runner.os == 'macOS'
-        run: ditto -c -k --keepParent bin/xy-videopress.app "XY_VideoPress-${{ matrix.name }}.zip"
+        run: |
+          mv bin/xy-videopress.app "bin/小燕压缩.app"
+          ditto -c -k --keepParent "bin/小燕压缩.app" "XY_VideoPress-${{ matrix.name }}.zip"
 
       - name: Collect installers (Windows)
         if: runner.os == 'Windows'
@@ -89,7 +91,7 @@ jobs:
             ## macOS 首次打开（未公证，需放行一次）
             下载解压后，首次打开会被系统拦住（“无法验证是否含恶意软件”），放行一次即可，二选一：
             1. **系统设置 → 隐私与安全性**，下拉找到 “xy-videopress 已被阻止” → 点 **仍要打开**。
-            2. 或终端运行：`xattr -dr com.apple.quarantine /Applications/xy-videopress.app`（路径换成实际位置）。
+            2. 或终端运行：`xattr -dr com.apple.quarantine /Applications/小燕压缩.app`（路径换成实际位置）。
 
             运行需本机安装 FFmpeg：macOS `brew install ffmpeg`，Windows `winget install ffmpeg`。
           files: |

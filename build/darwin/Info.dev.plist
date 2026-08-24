@@ -4,7 +4,9 @@
         <key>CFBundlePackageType</key>
             <string>APPL</string>
         <key>CFBundleName</key>
-            <string>XY_VideoPress</string>
+            <string>小燕压缩</string>
+        <key>CFBundleDisplayName</key>
+            <string>小燕压缩</string>
         <key>CFBundleExecutable</key>
             <string>xy_videopress</string>
         <key>CFBundleIdentifier</key>
@@ -17,8 +19,6 @@
             <string>0.1.0</string>
         <key>CFBundleIconFile</key>
             <string>icons</string>
-        <key>CFBundleIconName</key>
-            <string>appicon</string>
         <key>LSMinimumSystemVersion</key>
             <string>12.0.0</string>
         <key>NSHighResolutionCapable</key>
