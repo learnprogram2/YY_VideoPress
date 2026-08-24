@@ -1,59 +1,26 @@
-# Welcome to Your New Wails3 Project!
+# 小燕压缩 · YY_VideoPress
 
-Congratulations on generating your Wails3 application! This README will guide you through the next steps to get your project up and running.
+> 压缩、转换视频，让硬盘更清爽。
 
-## Getting Started
+## 目的
 
-1. Navigate to your project directory in the terminal.
+一个简单的桌面视频工具:拖入视频,选清晰度和码率,压缩或转格式,让文件更小、硬盘更健康。底层用 ffmpeg,界面用 Wails(Go + React)。
 
-2. To run your application in development mode, use the following command:
+## 运行
 
-   ```
-   wails3 dev
-   ```
+```bash
+wails3 dev      # 开发模式(热重载)
+wails3 build    # 打包成 .app
+```
+需要本机装了 ffmpeg(`brew install ffmpeg`)。
 
-   This will start your application and enable hot-reloading for both frontend and backend changes.
+## 文件结构
 
-3. To build your application for production, use:
-
-   ```
-   wails3 build
-   ```
-
-   This will create a production-ready executable in the `build` directory.
-
-## Exploring Wails3 Features
-
-Now that you have your project set up, it's time to explore the features that Wails3 offers:
-
-1. **Check out the examples**: The best way to learn is by example. Visit the `examples` directory in the `v3/examples` directory to see various sample applications.
-
-2. **Run an example**: To run any of the examples, navigate to the example's directory and use:
-
-   ```
-   go run .
-   ```
-
-   Note: Some examples may be under development during the alpha phase.
-
-3. **Explore the documentation**: Visit the [Wails3 documentation](https://v3.wails.io/) for in-depth guides and API references.
-
-4. **Join the community**: Have questions or want to share your progress? Join the [Wails Discord](https://discord.gg/JDdSxwjhGf) or visit the [Wails discussions on GitHub](https://github.com/wailsapp/wails/discussions).
-
-## Project Structure
-
-Take a moment to familiarize yourself with your project structure:
-
-- `frontend/`: Contains your frontend code (HTML, CSS, JavaScript/TypeScript)
-- `main.go`: The entry point of your Go backend
-- `app.go`: Define your application structure and methods here
-- `wails.json`: Configuration file for your Wails project
-
-## Next Steps
-
-1. Modify the frontend in the `frontend/` directory to create your desired UI.
-2. Add backend functionality in `main.go`.
-3. Use `wails3 dev` to see your changes in real-time.
-4. When ready, build your application with `wails3 build`.
-
-Happy coding with Wails3! If you encounter any issues or have questions, don't hesitate to consult the documentation or reach out to the Wails community.
+| 文件/目录 | 作用 |
+| --- | --- |
+| `main.go` | 应用入口:创建窗口、注册后端服务 |
+| `videoservice.go` | 后端核心:探测视频、压缩(两遍编码)、转格式,全调 ffmpeg |
+| `frontend/src/App.tsx` | 界面:选项、进度、结果、中英切换 |
+| `frontend/src/App.css` | 界面样式(浅色) |
+| `frontend/bindings/` | wails 自动生成的前后端绑定(勿手改) |
+| `Taskfile.yml` / `build/` | wails 构建配置 |
