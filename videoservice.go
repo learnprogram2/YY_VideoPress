@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 
@@ -43,11 +44,27 @@ func bin(name string) (string, error) {
 	if p, err := exec.LookPath(name); err == nil {
 		return p, nil
 	}
-	fallback := "/opt/homebrew/bin/" + name
-	if _, err := os.Stat(fallback); err == nil {
-		return fallback, nil
+	// GUI apps launched from Finder do not inherit the shell PATH, so check
+	// the common install locations directly.
+	for _, dir := range []string{"/opt/homebrew/bin", "/usr/local/bin", "/usr/bin"} {
+		p := filepath.Join(dir, name)
+		if _, err := os.Stat(p); err == nil {
+			return p, nil
+		}
 	}
-	return "", fmt.Errorf("%s not found — install it with `brew install ffmpeg`", name)
+	return "", fmt.Errorf("%s", ffmpegHelp())
+}
+
+// ffmpegHelp returns a friendly, OS-aware install hint (shown in the UI).
+func ffmpegHelp() string {
+	switch runtime.GOOS {
+	case "darwin":
+		return "未检测到 FFmpeg，无法处理视频。请先安装:终端运行  brew install ffmpeg  然后重开本应用。\n(FFmpeg not found — run `brew install ffmpeg`, then reopen.)"
+	case "windows":
+		return "未检测到 FFmpeg，无法处理视频。请先安装并加入 PATH:运行  winget install ffmpeg  或到 ffmpeg.org 下载,然后重开本应用。\n(FFmpeg not found — install FFmpeg and add it to PATH, then reopen.)"
+	default:
+		return "未检测到 FFmpeg,无法处理视频。请先安装(如 apt install ffmpeg),然后重开本应用。\n(FFmpeg not found — install it first, then reopen.)"
+	}
 }
 
 // PickFile opens a native file picker and returns the chosen path.
