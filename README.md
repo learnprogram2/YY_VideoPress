@@ -14,6 +14,15 @@ wails3 build    # 打包成 .app
 ```
 需要本机装了 ffmpeg(`brew install ffmpeg`)。
 
+## macOS 首次打开
+
+下载的 app 没有做 Apple 公证,首次打开会被系统拦住("无法验证是否含恶意软件")。放行一次即可,二选一:
+
+1. **系统设置** → **隐私与安全性** → 下拉找到 "xy-videopress 已被阻止" → 点 **仍要打开**。
+2. 或终端运行:`xattr -dr com.apple.quarantine /Applications/xy-videopress.app`(路径换成 app 实际位置)。
+
+之后正常双击即可。运行还需本机装 FFmpeg:`brew install ffmpeg`。
+
 ## 文件结构
 
 | 文件/目录 | 作用 |

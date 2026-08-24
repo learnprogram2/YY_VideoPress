@@ -80,6 +80,18 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
+          name: 小燕压缩 ${{ github.ref_name }}
+          body: |
+            ## 下载
+            - **macOS (Apple Silicon)**：`XY_VideoPress-mac-arm64.zip`
+            - **Windows (x64)**：下面的 `.exe`
+
+            ## macOS 首次打开（未公证，需放行一次）
+            下载解压后，首次打开会被系统拦住（“无法验证是否含恶意软件”），放行一次即可，二选一：
+            1. **系统设置 → 隐私与安全性**，下拉找到 “xy-videopress 已被阻止” → 点 **仍要打开**。
+            2. 或终端运行：`xattr -dr com.apple.quarantine /Applications/xy-videopress.app`（路径换成实际位置）。
+
+            运行需本机安装 FFmpeg：macOS `brew install ffmpeg`，Windows `winget install ffmpeg`。
           files: |
             XY_VideoPress-*.zip
             dist/*.exe
