@@ -1,0 +1,82 @@
+name: Build & Release
+
+# Build the macOS and Windows apps in CI (real runners, no cross-compile pain).
+# - Push a tag like v0.1.0  -> builds both and attaches them to a GitHub Release.
+# - Manual run (Actions tab) -> builds both and uploads them as artifacts.
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            name: mac-arm64
+          - os: windows-latest
+            name: windows-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install wails3 CLI
+        run: go install github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-alpha2.117
+
+      - name: Add Go bin to PATH (unix)
+        if: runner.os != 'Windows'
+        run: echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+
+      - name: Add Go bin to PATH (windows)
+        if: runner.os == 'Windows'
+        run: Add-Content -Path $env:GITHUB_PATH -Value "$(go env GOPATH)\bin"
+        shell: pwsh
+
+      - name: Install NSIS (windows installer)
+        if: runner.os == 'Windows'
+        run: choco install nsis -y
+
+      - name: Package
+        run: wails3 package
+
+      - name: Zip .app (macOS)
+        if: runner.os == 'macOS'
+        run: ditto -c -k --keepParent bin/yy-videopress.app "YY_VideoPress-${{ matrix.name }}.zip"
+
+      - name: Collect installers (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          Get-ChildItem bin -Filter *.exe -Recurse | Copy-Item -Destination dist
+        shell: pwsh
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: YY_VideoPress-${{ matrix.name }}
+          path: |
+            YY_VideoPress-*.zip
+            dist/*.exe
+          if-no-files-found: warn
+
+      - name: Attach to release (on tag)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            YY_VideoPress-*.zip
+            dist/*.exe
